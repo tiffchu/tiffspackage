@@ -1,4 +1,4 @@
-name: Publish to PyPI
+name: Publish to TestPyPI
 
 on:
   pull_request:
@@ -36,7 +36,7 @@ jobs:
 
       - name: Build package using Hatch
         run: |
-            hatch run build:check
+            hatch build --clean
 
             echo ""
             echo "Generated files:"
@@ -60,7 +60,7 @@ jobs:
     environment:
       name: pypi
       # Modify the url to be the name of your package
-      url: https://pypi.org/p/tiffspackage
+      url: https://test.pypi.org/p/tiffspackage
     permissions:
       id-token: write  # this permission is mandatory for PyPI publishing
     steps:
